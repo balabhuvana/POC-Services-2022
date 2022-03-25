@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">POC-Services-2022</string>
+    <string name="service_one">Service One</string>
+    <string name="service_two">Service Two</string>
 </resources>
