@@ -5,25 +5,53 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.os.Build
-import android.os.IBinder
+import android.os.*
 import androidx.core.app.NotificationCompat
 
 class MyForegroundService : Service() {
-    override fun onBind(intent: Intent?): IBinder? {
-        return null
-    }
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        generateForegroundNotification()
-        return START_STICKY
-    }
+    private val TAG: String = MyNormalService::class.java.name
+    private var serviceLooper: Looper? = null
+    private var serviceHandler: ServiceHandler? = null
 
     //Notififcation for ON-going
     private var iconNotification: Bitmap? = null
     private var notification: Notification? = null
     var mNotificationManager: NotificationManager? = null
     private val mNotificationId = 123
+
+    override fun onCreate() {
+        super.onCreate()
+
+        CommonUtil.printLogs(TAG, "onCreate()")
+
+        HandlerThread("ServiceStartArguments", Process.THREAD_PRIORITY_BACKGROUND).apply {
+            start()
+            // Get the HandlerThread's Looper and use it for our Handler
+            serviceLooper = looper
+            serviceHandler = ServiceHandler(looper)
+        }
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        generateForegroundNotification()
+
+        serviceHandler?.obtainMessage().also {
+            it?.arg1 = startId
+            serviceHandler?.sendMessage(it!!)
+        }
+
+        return START_STICKY
+    }
+
+    override fun onBind(intent: Intent?): IBinder? {
+        return null
+    }
+
+    override fun onDestroy() {
+        CommonUtil.printLogs(TAG, "onDestroy()")
+        super.onDestroy()
+    }
 
     private fun generateForegroundNotification() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -72,4 +100,24 @@ class MyForegroundService : Service() {
         }
 
     }
+
+    private inner class ServiceHandler(looper: Looper) : Handler(looper) {
+
+        override fun handleMessage(msg: Message) {
+            // Normally we would do some work here, like download a file.
+            // For our sample, we just sleep for 5 seconds.
+            try {
+                CommonUtil.printLogs(TAG, "Message:${msg.arg1}")
+                Thread.sleep(20000)
+            } catch (e: InterruptedException) {
+                // Restore interrupt status.
+                Thread.currentThread().interrupt()
+            }
+
+            // Stop the service using the startId, so that we don't stop
+            // the service in the middle of handling another job
+            stopSelf(msg.arg1)
+        }
+    }
+
 }
