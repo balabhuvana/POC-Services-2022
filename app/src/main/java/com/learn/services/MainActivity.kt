@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<NormalServiceFragment>(R.id.fragment_container_view)
+            add<ForegroundServiceFragment>(R.id.fragment_container_view)
         }
     }
 }

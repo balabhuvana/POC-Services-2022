@@ -15,7 +15,7 @@ class MyNormalService : Service() {
     override fun onCreate() {
         super.onCreate()
 
-        printLogs("onCreate()")
+        CommonUtil.printLogs(TAG, "onCreate()")
 
         HandlerThread("ServiceStartArguments", THREAD_PRIORITY_BACKGROUND).apply {
             start()
@@ -26,8 +26,8 @@ class MyNormalService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        printLogs("onStartCommand()")
-        intent?.extras?.getString(NormalServiceFragment.key_name, "")?.let { printLogs(it) }
+        CommonUtil.printLogs(TAG, "onStartCommand()")
+        intent?.extras?.getString(NormalServiceFragment.key_name, "")?.let { CommonUtil.printLogs(TAG, it) }
 
         serviceHandler?.obtainMessage()?.also {
             it.arg1 = startId
@@ -38,27 +38,23 @@ class MyNormalService : Service() {
     }
 
     override fun onBind(intent: Intent): IBinder {
-        printLogs("onBind()")
+        CommonUtil.printLogs(TAG, "onBind()")
         TODO("Return the communication channel to the service.")
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
-        printLogs("onUnbind()")
+        CommonUtil.printLogs(TAG, "onUnbind()")
         return super.onUnbind(intent)
     }
 
     override fun onRebind(intent: Intent?) {
-        printLogs("onRebind()")
+        CommonUtil.printLogs(TAG, "onRebind()")
         super.onRebind(intent)
     }
 
     override fun onDestroy() {
-        printLogs("onDestroy()")
+        CommonUtil.printLogs(TAG, "onDestroy()")
         super.onDestroy()
-    }
-
-    private fun printLogs(methodName: String) {
-        Log.i(TAG, "Method name: $methodName")
     }
 
     private inner class ServiceHandler(looper: Looper) : Handler(looper) {
@@ -67,7 +63,7 @@ class MyNormalService : Service() {
             // Normally we would do some work here, like download a file.
             // For our sample, we just sleep for 5 seconds.
             try {
-                printLogs("Message:${msg.arg1}")
+                CommonUtil.printLogs(TAG, "Message:${msg.arg1}")
                 Thread.sleep(5000)
             } catch (e: InterruptedException) {
                 // Restore interrupt status.
