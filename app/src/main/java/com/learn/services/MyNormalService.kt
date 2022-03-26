@@ -6,9 +6,9 @@ import android.os.*
 import android.os.Process.THREAD_PRIORITY_BACKGROUND
 import android.util.Log
 
-class MyService : Service() {
+class MyNormalService : Service() {
 
-    val TAG: String = MyService::class.java.name
+    val TAG: String = MyNormalService::class.java.name
     private var serviceLooper: Looper? = null
     private var serviceHandler: ServiceHandler? = null
 
@@ -27,7 +27,7 @@ class MyService : Service() {
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         printLogs("onStartCommand()")
-        intent?.extras?.getString(MainActivity.key_name, "")?.let { printLogs(it) }
+        intent?.extras?.getString(NormalServiceFragment.key_name, "")?.let { printLogs(it) }
 
         serviceHandler?.obtainMessage()?.also {
             it.arg1 = startId

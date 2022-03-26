@@ -10,7 +10,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.POCServices2022">
         <service
-                android:name=".MyService"
+                android:name=".MyNormalService"
                 android:enabled="true"
                 android:exported="true">
         </service>
