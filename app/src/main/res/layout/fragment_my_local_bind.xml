@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   tools:context=".binded.MyLocalBindFragment">
+
+    <TextView
+            android:id="@+id/tvRandomNumberLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/random_number"/>
+
+    <TextView
+            android:id="@+id/tvRandomNumber"
+            app:layout_constraintStart_toEndOf="@+id/tvRandomNumberLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBindService"
+            android:text="@string/bind_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRandomNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnUnBindService"
+            android:text="@string/unbind_service"
+            app:layout_constraintTop_toBottomOf="@+id/tvRandomNumber"
+            app:layout_constraintStart_toEndOf="@+id/btnBindService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnGetRandomNumber"
+            android:text="@string/get_random_number"
+            app:layout_constraintTop_toBottomOf="@+id/tvRandomNumber"
+            app:layout_constraintStart_toEndOf="@+id/btnUnBindService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

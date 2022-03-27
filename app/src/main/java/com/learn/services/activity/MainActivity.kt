@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.learn.services.R
+import com.learn.services.binded.MyLocalBindFragment
 import com.learn.services.databinding.ActivityMainBinding
 import com.learn.services.foreground.ForegroundServiceFragment
 
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<ForegroundServiceFragment>(R.id.fragment_container_view)
+            add<MyLocalBindFragment>(R.id.fragment_container_view)
         }
     }
 }

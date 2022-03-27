@@ -6,4 +6,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start">Start</string>
     <string name="stop">Stop</string>
+    <string name="bind_service">Bind Service</string>
+    <string name="unbind_service">Un bind</string>
+    <string name="get_random_number">Get random number</string>
+    <string name="random_number">Random number: </string>
 </resources>
