@@ -1,10 +1,10 @@
-package com.learn.services
+package com.learn.services.normal
 
 import android.app.Service
 import android.content.Intent
 import android.os.*
 import android.os.Process.THREAD_PRIORITY_BACKGROUND
-import android.util.Log
+import com.learn.services.CommonUtil
 
 class MyNormalService : Service() {
 

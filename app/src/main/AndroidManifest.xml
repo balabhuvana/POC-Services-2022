@@ -12,22 +12,22 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.POCServices2022">
         <activity
-                android:name=".SecondActivity"
+                android:name=".activity.SecondActivity"
                 android:exported="true"/>
 
         <service
-                android:name=".MyForegroundService"
+                android:name=".foreground.MyForegroundService"
                 android:enabled="true"
                 android:exported="true">
         </service>
         <service
-                android:name=".MyNormalService"
+                android:name=".normal.MyNormalService"
                 android:enabled="true"
                 android:exported="true">
         </service>
 
         <activity
-                android:name=".MainActivity"
+                android:name=".activity.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

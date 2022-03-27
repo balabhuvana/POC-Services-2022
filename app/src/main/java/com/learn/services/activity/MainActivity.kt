@@ -1,11 +1,13 @@
-package com.learn.services
+package com.learn.services.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import com.learn.services.R
 import com.learn.services.databinding.ActivityMainBinding
+import com.learn.services.foreground.ForegroundServiceFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

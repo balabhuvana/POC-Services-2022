@@ -1,4 +1,4 @@
-package com.learn.services
+package com.learn.services.foreground
 
 import android.app.*
 import android.content.Context
@@ -7,6 +7,10 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.*
 import androidx.core.app.NotificationCompat
+import com.learn.services.CommonUtil
+import com.learn.services.normal.MyNormalService
+import com.learn.services.R
+import com.learn.services.activity.SecondActivity
 
 class MyForegroundService : Service() {
 
