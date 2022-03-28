@@ -10,4 +10,6 @@
     <string name="unbind_service">Un bind</string>
     <string name="get_random_number">Get random number</string>
     <string name="random_number">Random number: </string>
+    <string name="send_first_message">Send first message</string>
+    <string name="send_second_message">Send second message</string>
 </resources>
