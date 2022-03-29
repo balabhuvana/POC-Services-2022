@@ -12,4 +12,7 @@
     <string name="random_number">Random number: </string>
     <string name="send_first_message">Send first message</string>
     <string name="send_second_message">Send second message</string>
+    <string name="register_with_remote_service">Register with remote service</string>
+    <string name="un_register_with_remote_service">Unregiter with remote service</string>
+    <string name="send_client_message">Send client message</string>
 </resources>

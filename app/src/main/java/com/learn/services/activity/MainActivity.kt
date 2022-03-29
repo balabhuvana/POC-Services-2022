@@ -7,7 +7,7 @@ import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.learn.services.R
 import com.learn.services.databinding.ActivityMainBinding
-import com.learn.services.remotebinded.MessengerServiceFragment
+import com.learn.services.remotebinded.MyClientFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
-            add<MessengerServiceFragment>(R.id.fragment_container_view)
+            add<MyClientFragment>(R.id.fragment_container_view)
         }
     }
 }

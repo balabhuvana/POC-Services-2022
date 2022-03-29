@@ -12,10 +12,15 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.POCServices2022">
         <service
-                android:process=":myRemoteProcess"
-                android:name=".remotebinded.MyMessengerService"
+                android:name=".remotebinded.MyRemoteService"
                 android:enabled="true"
                 android:exported="true">
+        </service>
+        <service
+                android:name=".remotebinded.MyMessengerService"
+                android:enabled="true"
+                android:exported="true"
+                android:process=":myRemoteProcess">
         </service>
 
         <activity
